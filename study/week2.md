@@ -136,3 +136,4 @@ double getSpeed(){
     return km; //km로 변환한 값을 return 하여 외부에서 값을 읽을 수 있음
 }
 ```
+
