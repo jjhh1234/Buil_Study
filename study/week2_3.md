@@ -27,4 +27,6 @@ public abstract class 클래스{
 + **자식클래스는 반드시 추상메소드를 재정의해서 사용해야함**
 ```
 abstract 리턴타입 메소드 이름(매개변수..);
+
+ex> public abstract void sound();
 ```
