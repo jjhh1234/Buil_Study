@@ -60,7 +60,7 @@ Animal animal = new Cat();
 
 ## 4-1. 타입변환2
 + 바로위의 부모가 아니더라도 상속계층에서 상위 타입이라면 저동으로 타입 변환 가능
-+ ![Uploading 스크린샷 2024-05-19 200538.png…]()
++ C:\Users\kisss\OneDrive\사진\Screenshots\스크린샷 2024-05-19 200538.png
 
 
 ## 4-2. 강제타입변환
