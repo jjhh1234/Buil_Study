@@ -107,3 +107,32 @@ public class Calculator(){
 
 클래스.메소드(매개값,..);
 ```
+
+## 6. 접근 제한자
++ ***public*** : 외부 클래스에서 자유롭게 사용 가능
++ ***protected*** : 같은 패키지 또는 자식클래스에서 사용 가능
++ ***private*** : 외부에서 사용 불가능
++ ***default*** : 같은 패키지내에 클래스만 사용가능, 접근제한자 생략시 default
+
+## 7.Gatter와 Setter 메소드
++ 외부에서 객체의 필드로 직접적으로 접근하는것을 막기위해 사용
++ 때문에 메소드를 이용해 필드를 변경하는 방법을 사용
++ Setter : 외부에서 값 변경
++ Getter : 외부에서 값 읽음
++ 필드 타입이 boolean 일 경우 Getter은 get 이 아니라 is로 시작
+```
+* Setter 사용 예시
+void setSpeed(double speed){
+  if(speed<0){  
+    this.speed = 0;
+    return; //speed 값이 음수면 필드의 speed를 0으로 변경
+}else
+  this.speed = speed
+}
+
+* Getter 사용 예시
+double getSpeed(){
+    double km = speed*1.6;
+    return km; //km로 변환한 값을 return 하여 외부에서 값을 읽을 수 있음
+}
+```
