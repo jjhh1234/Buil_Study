@@ -61,7 +61,7 @@ class A{
   void method1(Parent parent){ }
 
   void method2(){
-    new Parent( // 어차피 매개변수로 변환되거나 매개변수에 담을 것이니 변수는 필요없다 -> 바로 익명객체를 정의하기위한 변수생성
+    new Parent( // 어차피 매개변수로 변환되거나 매개변수에 담을 것이니 변수는 필요없다 -> 바로 익명객체를 정의하기위한 변수생성 (main에서 익명객체 정의됨)
       int childField; 
       void childMethod(){ }
   @Override
@@ -108,7 +108,7 @@ class A{
   method2(RemoteControl rc){} // 매개변수 호출
 
   void method2(
-  new RemoteControl(){ //RemoteControl 객체생성후 익명구현객체 메서드 실행 
+  new RemoteControl(){ //RemoteControl 객체생성후 익명구현객체 메서드 실행 (main 메소드에서 정의됨)
   @Override
   void turnOn(){}
 }
