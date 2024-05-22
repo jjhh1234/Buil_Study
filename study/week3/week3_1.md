@@ -138,3 +138,54 @@ class A{
 + 컴파일러 넌체크 예외
 + 실생시 예측할 수 없이 갑자기 발생하기 때문에 컴파일 하는 과정에서 예외 처리 코드가 있는지 검사하지 않음
 + 실행 예외는 자바 컴파일러가 체크하지 않기 때문에 오로지 **개발자 경험의 의존해서 작성**(어 이거 에러날것 같은데 이건 써줘야겠다)
+
+## 3-2_1. NullPointerException
++ 객체가 없는 즉, null 값인 상황에서 객체를 사용하려 해서 발생하는 실행예외
+```
+public class A{
+  public static void main(String[] args){
+    String data = null; //값이 null이기 때문에 String 객체를 참조하고 있지 않음 
+    System.out.println(data.toString()); //값이 없는 상태에서 String 객체를 참조하려고 하니 문제가 발생  
+}
+}
+```
+
+## 3-2_2. ArrayIndexOutOfBoundsException
++ 배열에서 인덱스 범위를 초과할 경우 발생하는 실행예외
++ 예를 들어 길이가 3인 int arr[] = new int[3] 배열을 사용하고 arr[3] 에 접근할때 범위를 벗어나 발생한다.
+```
+public class A{
+  public static void main(String[] args){
+    String data = arr[0];
+    System.out.println("data" + data); //실행 매개값이 주어져 있지 않아 오류 발생    
+}
+}
+```
+
+## 3-2_3. NumberFormatException
++ 문자를 숫자로 변환할때 숫자로 변환될 수 없는 문자가 포함되어 있다면 발생하는 실행예외
+```
+public class A{
+  public static void main(String[] args){
+    String data1 = "100";
+    String data2 = "100a";
+
+    int value = Integer.parseInt(data1);
+    int value = Integer.parseInt(data2); //a는 숫자로 바꿀수 없는 문자 이기 때문에 Number실행 예외 발생
+}
+}
+```
+
+## 3-2_4. ClassCastException
++ 타입변환시 대입된 객체가 아니라 다른 객체가 대입된 경우(예시로 보자)
+```
+// 올바른 타입변환 예시 생성된 Dog 객체가 부모타입 -> 자식타입 
+
+Animal animal = new Dog();
+Dog dog = (Dog) animal;
+
+// 잘못된 타입변환 예시
+
+Animal animal = new Dog();
+Cat cat = (Cat)animal; //실행 예외 발생 
+```
