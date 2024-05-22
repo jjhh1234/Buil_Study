@@ -189,3 +189,18 @@ Dog dog = (Dog) animal;
 Animal animal = new Dog();
 Cat cat = (Cat)animal; //실행 예외 발생 
 ```
+
+```
+public class A{
+  public static void main(String[] args){
+    Dog dog = new Dog();
+    changeDog(dog);
+
+    Cat cat = new Cat();
+    changeDog(cat);
+}
+public static void changeDog(Animal animal){
+  Dog dog = (Dog)animal; // 실행예외 발생 인데 이건 좀 공부 
+}
+}
+```
