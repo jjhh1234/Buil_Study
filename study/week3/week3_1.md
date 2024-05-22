@@ -200,7 +200,16 @@ public class A{
     changeDog(cat);
 }
 public static void changeDog(Animal animal){
-  Dog dog = (Dog)animal; // 실행예외 발생 인데 이건 좀 공부 
+  Dog dog = (Dog)animal; // animal로 Cat객체를 받아오는데 Dog와 Cat은 animal을 상속한다 해도 서로 영향을 줄수 없는 서로다른 객체이다 - 따라서 연관될 수 없고 Cat 은 Cat(자기 자신) 이나 Animal(부모클래스) 가 아니면 오류발생 
 }
+  
 }
 ```
+
+## 4. 예외처리 
++ 일반 예외시 컴파일 에러를 발생시켜 개발자가 강제적으로 예외처리코드를 작성하도록 요구
+
+## 4-1.예외처리코드
++ **try - catch - finally** 블록 : 생성자 내부와 메소드 내부에서 작성되어 일반예외와 실행예외가 발생할 경우 예외처리를 가능하게 함
+
+
