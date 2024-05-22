@@ -211,5 +211,12 @@ public static void changeDog(Animal animal){
 
 ## 4-1.예외처리코드
 + **try - catch - finally** 블록 : 생성자 내부와 메소드 내부에서 작성되어 일반예외와 실행예외가 발생할 경우 예외처리를 가능하게 함
-
-
+```
+public class A{
+  public static void main(String[] args){
+    try{
+      Class clazz = Class.forName("java.lang.String2");
+}
+}
+}
+```
