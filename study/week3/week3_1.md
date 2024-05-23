@@ -215,7 +215,27 @@ public static void changeDog(Animal animal){
 public class A{
   public static void main(String[] args){
     try{
-      Class clazz = Class.forName("java.lang.String2");
+//Class.forName()메소드는 매개값으로 주어진 클래스가 존재하면 Class 객체 리턴/존재하지않으면 ClassNotFoundExceptionn 발생
+      Class clazz = Class.forName("java.lang.String2"); 
+}catch(ClassNotFoundException e){ //예외객체 
+    System.out.println("클래스가 존재하지 않습니다."); // try 실행문에서 발생한 예외타입이 catch문()의 예외객체타입과 동일하다면 실행  
+}
+}
+}
+```
++ Q) try-catch문에서 catch 문 뒤에는 뭘 의미하는건가?
++ A) if-else문의 () 조건문과 비슷하다 -> try문에서 실행한 코드의 예외가 catch문에서 작성한 예외객체 타입과 동일하다면 catch문을 실행 하는것(딱히 이해보다는 받아들여야할것 같다)
+
+## 4-2. 다중 catch문
++ try문에서 다양한 예외가 발생할 수 있는데 각 발생되는 예외별로 예외처리 코드를 다르게 하기위해 사용
++ ****
+```
+public class A{
+  public static void main(String[] args){
+    try{
+      String data = args[0];
+      String data2 = args[1];
+      int value = 
 }
 }
 }
