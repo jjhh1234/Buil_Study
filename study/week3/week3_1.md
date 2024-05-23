@@ -232,11 +232,12 @@ public class A{
 ## cf) 다중 catch문을 하기 전에 알아둘것
 + catch 블록이 여러개라 해도 단 하나의 catch문만 실행
 + try 블록에서 하나의 예외가 발생하면 즉시 실행을 멈추고 해당 catch블록으로 이동하기때문
-
++ **catch 순서 : 상위 예외클래스(Exceptin) 이 하위 예외클래스(RunTimeException) 보다 아래쪽에 위치해야함 **
++ 상위클래스인 Exception이 위쪽에 위치한 경우 모든 예외발생시 Exception 데이터 타입 catch문이 출력된다  
 
 ## 4-2. 다중 catch문
 + try문에서 다양한 예외가 발생할 수 있는데 각 발생되는 예외별로 예외처리 코드를 다르게 하기위해 사용
-+ ****
+
 ```
 public class A{
   public static void main(String[] args){
@@ -250,8 +251,12 @@ public class A{
 }catch(NumberformatException e){
     System.out.println("숫자로 변환할 수 없는 문자입니다.");
 }finally{
-    System.out.println("프로그램을 다시 실행하세요"); //예외와 관계없이 무조
+    System.out.println("프로그램을 다시 실행하세요"); //예외와 관계없이 무조건 실행 
 }
 }
 }
 ```
+
+## 5. 예외 떠넘기기(throws)
++ 메소드를 호출한 곳으로 예외를 떠넘길 수 있음
++ 
