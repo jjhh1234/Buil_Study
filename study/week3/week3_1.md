@@ -128,6 +128,8 @@ class A{
 + 모든 예외 클래스는 java.lang.Exception 클래스를 상속 받음
 + 실행 예외클래스는 RutimeException 클래스를 기준으로 구분
 + RuntimeException의 하위클래스가 아니면 일반예외클래스이고 하위클래스면 실행예외 클래스
+![image](https://github.com/jjhh1234/Buil_Study/assets/105401500/919b907a-d792-404c-988a-ef87363a487d)
+
 
 ## 3-1. 일반 예외
 + 컴파일러 체크 예외
@@ -211,6 +213,7 @@ public static void changeDog(Animal animal){
 
 ## 4-1.예외처리코드
 + **try - catch - finally** 블록 : 생성자 내부와 메소드 내부에서 작성되어 일반예외와 실행예외가 발생할 경우 예외처리를 가능하게 함
++ **try : 오류가 발생하는 실행 코드/ catch : try 문에서 발생한 예외 타입과 () 안의 예외타입이 동일할 경우 실행문 실행 / finally : 오류 여부외 관계없이 항상 실행**
 ```
 public class A{
   public static void main(String[] args){
@@ -226,6 +229,11 @@ public class A{
 + Q) try-catch문에서 catch 문 뒤에는 뭘 의미하는건가?
 + A) if-else문의 () 조건문과 비슷하다 -> try문에서 실행한 코드의 예외가 catch문에서 작성한 예외객체 타입과 동일하다면 catch문을 실행 하는것(딱히 이해보다는 받아들여야할것 같다)
 
+## cf) 다중 catch문을 하기 전에 알아둘것
++ catch 블록이 여러개라 해도 단 하나의 catch문만 실행
++ try 블록에서 하나의 예외가 발생하면 즉시 실행을 멈추고 해당 catch블록으로 이동하기때문
+
+
 ## 4-2. 다중 catch문
 + try문에서 다양한 예외가 발생할 수 있는데 각 발생되는 예외별로 예외처리 코드를 다르게 하기위해 사용
 + ****
@@ -233,9 +241,16 @@ public class A{
 public class A{
   public static void main(String[] args){
     try{
-      String data = args[0];
+      String data = args[0]; //존재하지 않는 배열값 -> ArrayIndexOutOfException 발생 -> catch문에서 일치하는 예외타입으로 이동
       String data2 = args[1];
-      int value = 
+      int value1 = Integer.parseInt(data1);
+      int value2 = Integer.parseInt(data2); 
+}catch(ArrayIndexOutOfException e){
+    System.out.println("실행 매개값이 존재하지 않습니다."); //실행 결과값
+}catch(NumberformatException e){
+    System.out.println("숫자로 변환할 수 없는 문자입니다.");
+}finally{
+    System.out.println("프로그램을 다시 실행하세요"); //예외와 관계없이 무조
 }
 }
 }
