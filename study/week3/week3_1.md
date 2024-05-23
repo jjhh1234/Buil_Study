@@ -211,6 +211,9 @@ public static void changeDog(Animal animal){
 ## 4. 예외처리 
 + 일반 예외시 컴파일 에러를 발생시켜 개발자가 강제적으로 예외처리코드를 작성하도록 요구
 
+## cf1) 예외를 확인할 떄 사용되는함수
++ Class clazz = Class.forName(""); = ()안에 클래스 경로를 넣고 그 클래스가 존재하면 class 경로를 반환
+
 ## 4-1.예외처리코드
 + **try - catch - finally** 블록 : 생성자 내부와 메소드 내부에서 작성되어 일반예외와 실행예외가 발생할 경우 예외처리를 가능하게 함
 + **try : 오류가 발생하는 실행 코드/ catch : try 문에서 발생한 예외 타입과 () 안의 예외타입이 동일할 경우 실행문 실행 / finally : 오류 여부외 관계없이 항상 실행**
@@ -229,7 +232,7 @@ public class A{
 + Q) try-catch문에서 catch 문 뒤에는 뭘 의미하는건가?
 + A) if-else문의 () 조건문과 비슷하다 -> try문에서 실행한 코드의 예외가 catch문에서 작성한 예외객체 타입과 동일하다면 catch문을 실행 하는것(딱히 이해보다는 받아들여야할것 같다)
 
-## cf) 다중 catch문을 하기 전에 알아둘것
+## cf2) 다중 catch문을 하기 전에 알아둘것
 + catch 블록이 여러개라 해도 단 하나의 catch문만 실행
 + try 블록에서 하나의 예외가 발생하면 즉시 실행을 멈추고 해당 catch블록으로 이동하기때문
 + **catch 순서 : 상위 예외클래스(Exceptin) 이 하위 예외클래스(RunTimeException) 보다 아래쪽에 위치해야함 **
@@ -259,4 +262,20 @@ public class A{
 
 ## 5. 예외 떠넘기기(throws)
 + 메소드를 호출한 곳으로 예외를 떠넘길 수 있음
-+ 
++ **throws 키워드가 붙어있는 메소드는 반드시 try블록 내에서 호출 되어야함**
+```
+public void mathod1(){
+try{
+  method2(); // try 블록 내에 throws 키워드가 붙어있는 method2() 호출 
+}catch(ClassNetFoundException){ //method2()에서 발생한 오류타입 일치
+System.out.println("클래스가 존재하지 않습니다."); // 타입 일치시 실행문 실행 
+}
+}
+public void method2() throws ClassNotFoundException{ // 예외 여러개 throws 가능, method2 실행시 발생하는 예외들을 호출한 곳으로 떠넘김 (형태 기억하자) 
+    Class clazz = Class.forname("java.lang.String2"); // 해당 클래스가 존재하는지 검사
+}
+======================================================
+
+method1() throws ClassNotFoundException {} // method1에서 다시 예외를 떠넘길 수 있음 - 이때 method1()을 호출하는 try문이 존재해야함
+```
+
