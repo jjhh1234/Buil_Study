@@ -22,7 +22,7 @@ class A{
     int childField; //익명객체 필드정의 (parent 단독으로 접근 불가 -> 익명객체의 클래스 이기 떄문)
     void childMethod(){ //익명객체 메서드 정의
     System.out.println("hi");
-};
+
     @Overrid 
     void parentMethod(){ //부모클래스의 parentMethod 재정의
     childField = 3;
