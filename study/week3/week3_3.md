@@ -12,6 +12,6 @@
 + **자바의 최상위 부모클래스**
 + 자바의 모든 클래스는 **Object 클래스의 자식이거나 자손 클래스**
 
-
 ![image](https://github.com/jjhh1234/Buil_Study/assets/105401500/27ac43ab-5472-468c-9d1a-8f6a5c4b6dec)
 
+### 2-1_1. 객체비교 equals()
