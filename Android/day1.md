@@ -26,4 +26,27 @@
 + **다른 앱을 라이브러리 처럼 사용할 수 있다** 해서 앱 라이브러리 개념으로 불러진다 
 
 ## 3. View 클래스
++ 액티비티를 구성할때 사용하는 클래스는 모두 View의 하위클래스(그래서 통칭 뷰클래스라고 함)
++ **View** : 모든 뷰 클래스의 최상위 클래스, **액티비티는 View의 서브클래스만 화면에 출력**
++ **ViewGroup** : **그릇역할을 하는 클래스로 다른 뷰 여러개들을 묶어서 제어할 목적으로 사용** , **실제로는 ViewGroup의 서브클래스인 레이아웃 클래스를 사용**
++ **TextView** : **문자열을 출력하는 View**
 
+![image](https://github.com/jjhh1234/Buil_Study/assets/105401500/b8b5ce80-2818-45f7-b423-0d190f785e95)
+
+
+### 3-1. 레이아웃 클래스 (LinearLayout)
++ 한꺼번에 출력 혹은 정렬
+
+## 4. View의 크기를 지정하는 방법
++ layout_width, layout_height : View의 크기를 설정하는 속성
++ 수치 : px, dp 등의 단위 사용
++  match_parent : 부모 크기의 전체, 계층구조에서 자신보다 상위 계층의 크기
++  wrap_content : 자신의 콘텐츠를 화면에 출력할 수 있는 적절한 크기 (Button의 경우 button 안의 문자열이 들어갈 수 있을 만큼의 크기)
+
+## 5. View의 간격설정
++ margin : 뷰와 뷰 사이의 간격 (layout_marginRight 등)
++ padding : 뷰와 콘텐츠 테두리 사이의 간격 (padding_left 등)
+
+## 6. 뷰의 표시 여부 설정 (visibility)
++ visibility : 뷰가 화면에 출력 되어야 하는지 설정
++ **visible**
