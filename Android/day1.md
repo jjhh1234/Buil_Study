@@ -49,4 +49,18 @@
 
 ## 6. 뷰의 표시 여부 설정 (visibility)
 + visibility : 뷰가 화면에 출력 되어야 하는지 설정
-+ **visible**
++ **visible** : 뷰가 화면에 출력
++ **invisible** : 뷰가 화면에 보이지 않지만 자리를 차지함
++ **gone** : 뷰가 화면에 보이지 않고 자리도 차지하지 않음
+
+## 7. 텍스트 뷰
++ 문자열을 화면에 출력하는 뷰
++ android:text = "helloworld" : 출력할 문자열을 저장
++ android:textColor = "#FF0000" : 문자열의 색상을 지정, 16진수RGB형식 사용
++ android:textSize = "20sp" : 문자열의 크기를 지정 (단위는 px, dp, sp 등을 사용)
++ android:textStyle = "bold" : 문자열의 스타일을 지정 (bold, italic, normal 등)
+
+## 8. 이미지 뷰
++ android:src="@drawable/image3" (drawable폴더에 저장된 image3)처럼 설정
++ 이미지의 최대 크기 지정해주기 : maxWidth/ maxHeight
++ maxWidth
