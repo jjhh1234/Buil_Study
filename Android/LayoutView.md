@@ -120,3 +120,55 @@ android:layout_rowSpan="1" //세로로 열 병합
 + 가장 많이 사용되는 레이아웃 클래스
 + 절대적 위치가 아니라 상대적 위치를 지원하기 때문에 크기가 다른 핸드폰마다 같은 화면 공유 가능
 + 다른 레이아웃 뷰들은 뷰의 깊이 때문에 메모리에서 뷰 계층 구조를 계산할때 시간이 오래 걸리지만 constraint는 계층구조가 깊지 않기 때문에 메모리 부하가 적음
+
+### 5-1) Relative positioning(상대적 위치 지정)
++ 이 속성을 사용하고 마진을 사용하고 싶으면 모든 방향 기준을 정해주어야 사용 가능
+
+```
+app:layout_constraintLeft_toLeftOf : 해당 뷰의 왼쪽을 지정된 요소의 왼쪽과 맞춤
+// 나머지도 저런식
+
+app:layout_constraintStart_toStartOf : 해당 뷰의 시작 위치를 지정된 요소의 시작 위치와 맞춤
+
+app:layout_constraintStart_toEndOf : 해당 뷰의 시작 위치를 지정된 요소의 끝 위치와 맞춤
+
+app:layout_constraintBaseline_toBaselineOf : 해당 뷰와 지정된 요소의의 문자열 기준선을 맞춤
+```
+
+### 5-2) margins 와 관련된 속성
+
+```
+app:layput_goneMarginLeft : 해당 뷰의 왼쪽에 지정된 요소의 visibility가 gone 상태일 때 의 여백을 지정
+```
+
+### 5-3) centering positioning과 관련된 속성(중앙 위치지정, bias)
++ constraint 에서 방향 겅어주려면 전부 기준 잡아야 하는듯? 
++ 중앙정렬이 되도록 하기 위해서는 양쪽 방향으로 제약을 동시에 걸어주면 됨 
++ 수평방향 중앙 : 왼쪽과 오른쪽 제약 동시
++ 수직방향 중앙 : 위쪽과 아래쪽 제약 동시 
+
+```
+// 기준 방향으로 제약 조건 걸어주기
+app:layout_constraintLeft_toLeftOf = "parent" //왼쪽 제약 조건 걸기
+app:layout_constraintRight_toRightOf = "parent" //오른쪽 제약 조건 걸기
+
+app:layout_constraintHorizonral_bias ="0.25" // 수평방향으로 치우침강도 조절
+app:layout_constraintVertical_bias = "" // 수직방향 치우침 강도 조절
+```
+
+### 5-4) Chains 관련된 속성
++ 수평 또는 수직방향으로 연결된 뷰를 그룹처럼 다룰 수 있음
++ 뷰들 간에 양방향으로 연결 되면 chain 으로 인식
++ 첫번째 요소에 설정된 속성의 의해서 제어됨 
+
+```
+app:layout_constraintHorizontal_chainStyle : 수평방향에 체인 연결 형태를 지정 (spread, spread_inside, packed) 
+```
+
+![image](https://github.com/jjhh1234/Buil_Study/assets/105401500/3b45ab4a-07fc-4880-b4bd-9187ba36de11)
+
+```
+app:layout_constraintHorizontal_weight : match_constraint(= 0dp)를 사용하는 요소중 수평방향 여백을 차지하는 비율
+app:layout_constraintVertical_weight : match_constraint(= 0dp)를 사용하는 요소중 수직방향 여백을 차지하는 비율
+```
+
