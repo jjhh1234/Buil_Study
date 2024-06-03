@@ -134,7 +134,7 @@ app:layout_constraintStart_toStartOf : 해당 뷰의 시작 위치를 지정된 
 
 app:layout_constraintStart_toEndOf : 해당 뷰의 시작 위치를 지정된 요소의 끝 위치와 맞춤
 
-app:layout_constraintBaseline_toBaselineOf : 해당 뷰와 지정된 요소의의 문자열 기준선을 맞춤
+app:layout_constraintBaseline_toBaselineOf : 해당 뷰와 지정된 요소의 문자열 기준선을 맞춤 (다른 요소들과 함께 사용가능)
 ```
 
 ### 5-2) margins 와 관련된 속성
