@@ -52,7 +52,7 @@ android:layout_toLeftOf = "" // 기준 뷰의 왼쪽에 위치
 android:layout_toRightOf = "" // 기준 뷰의 오른쪽에 위치
 ```
 
-## 2-1. align속성
+### 2-1. align속성
 + 상대뷰를 기준으로 위치를 정하고 기준뷰의 어떤 쪽으로 맞출 건지 정하눈 속성
 
 ```
