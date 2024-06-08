@@ -62,8 +62,58 @@ public void turnoff(); // 추상 메소드 선언
 // 구현 객체를 생성기 위한 구현 클래스 선언
 
 public class A implements Animal{
+
 }
+
+------------------------------------------------------------------------------------------
+// 인터 페이스 사용 방법
+// 인터페이스 변수 animal 선언
+// 선언된 인터페이스 변수에 구현 객체 대입
+
+public class AExample{
+  public static void main(String[] args){
+      Animal animal;  //인터페이스 변수 선언
+  animal = new A(); // 구현 객체 대입 - 자동 타입 변환 인가..?
+  }
+}
+ 
 ```
+
+### 2-1. 다중인터페이스 구현 클래스
++ 다중인터페이스 선언시 모든 인터페이스에 대한 추상 메소드를 작성 해야함
+
+```
+// 다중 인터페이스 선언 방식
+
+public class A implements Animal, Human{
+  // 클래스 Animal에 대한 실체 메소드 선언
+  // 클래스 Human에 대한 실체 메소드 선언
+}
+
+```
+
+## 3. 인터페이스의 타입변환과 다형성
++ 인터페이스의 다형성 : 소스코드는 변함이 없고 구현 객체를 교체함으로써 결과가 다양해짐
+
+```
+// 인터페이스 변수 =  구현 객체;
+
+Animal animal = new A();
+
+------------------------------------------------------------------------------------------
+
+
+public class Car{
+    Tire fLTire = new HankookTire();
+    Tire fRTire = new HankookTire();
+    Tire bLTire = new HankookTire();
+    Tire bRTire = new HankookTire();
+
+}
+
+```
+
+
 
 
 
