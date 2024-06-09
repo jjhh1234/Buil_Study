@@ -73,11 +73,21 @@ public class A implements Animal{
 public class AExample{
   public static void main(String[] args){
       Animal animal;  //인터페이스 변수 선언
-  animal = new A(); // 구현 객체 대입 - 자동 타입 변환 인가..?
+  animal = new A(); // 구현 객체 대입 - 자동 타입 변환
   }
 }
  
 ```
+
++ Q) 인터페이스 변수를 선언만하고 나중에 값을 할당하는게가능해?? ( A. 자바의 모든 킁래스와 인터페이스는 타입을 정의하기 때문에 타입을 가질 수 있다)
++ A) 자바에서 모든 객체들은 선언먼저 하고 나중에 초기화가 가능, 인터페이스는 객체를 생성할 수 없으니 구현 객체로 초기화 하는거고
++ EX
+
+```
+Nolmal nol;
+nol = new Nolmal();
+```
+
 
 ### 2-1. 다중인터페이스 구현 클래스
 + 다중인터페이스 선언시 모든 인터페이스에 대한 추상 메소드를 작성 해야함
@@ -94,27 +104,139 @@ public class A implements Animal, Human{
 
 ## 3. 인터페이스의 타입변환과 다형성
 + 인터페이스의 다형성 : 소스코드는 변함이 없고 구현 객체를 교체함으로써 결과가 다양해짐
++
 
 ```
 // 인터페이스 변수 =  구현 객체;
 
-Animal animal = new A();
+Animal animal = new A(); // A객체가 Animal 타입으로 타입변환 (A에서 오버라이딩된 실체 메소드들을 사용가능) 
 
 ------------------------------------------------------------------------------------------
-
+// Tire 변수 정보를 가지고 있는 Car 클래스
 
 public class Car{
-    Tire fLTire = new HankookTire();
+    Tire fLTire = new HankookTire(); //한국타이어 객체 타입변환 - 한국타이어에서 오버라이딩 된 실체 메소드 값 가짐
     Tire fRTire = new HankookTire();
     Tire bLTire = new HankookTire();
     Tire bRTire = new HankookTire();
 
+
+// 함수 선언(roll()함수는 만들기 귀찮음 그냥 어딘가에 있다고 치자)
+
+    void run(){
+      fLTire.roll();
+      fRTire.roll();
+      bLTire.roll();
+      bRTire.roll();
+}
+}
+
+------------------------------------------------------------------------------------------
+// 실행 클래스(그냥 내가 만든거임)
+
+public class CarExample{
+  public static void main(String[] args){
+    Car mycar = new Car(); //Tire 변수 정보를 가지는 Car 객체 생성
+
+    mycar.fLTire = new KumhoTire(); // 변수의 값을 금호 타이어로 교체 - 금호타이어에서 오버라이딩된 실체 메소드 값가짐
+    mycar.fRTire = new KumhoTire();
+
+    mycar.run(); // 실행하면 각 객체에 맞는 값 호출
+
+  }
+}
+
+// 실행 결과
+
+금호자동차가 달립니다.  // 금호타이어로 교체된 값이 적용돼서 실행(당연하지 필드의 값이 교체 된거니까, 필드의 다형성 : 필드의 값이 교체됨에 따라 다양한 결과를 호출)
+금호자동차가 달립니다.
+한국타이어가 달립니다.
+한국타이어가 달립니다.
+
+```
+
+### cf) 인터페이스의 구현클래스에서 추상메소드를 오버라이딩할때 접근제한자에서 충돌이 발생했다 (접근제한자 문제)
++ **인터페이스는 기본적으로 public 인데 내가 구현 클래스에서 오버라이딩할때 메소드에 접근제한자를 생략해 default 접근 제한자를 가지게됨**
++ **오버라이딩 규칙은 오버라이딩하는 메소드의 접근 제한자는 기존 메소드의 접근제한자와 같거나 넓어야함**
++ **접근제한자 범위 public > protected > default(package-private) > private**
+
+### 3-1. 매개변수의 다형성
++ 메소드를 호출할때 발생
++ 상속에서는 매개값을 다양화하기 위해서 부모타입을 매개변수로 두고 호출할때 인수로는 자식객체를 대입 (자식객체에서 오버라이딩된 메소드 호출) 
++ 인터페이스에서는 인터페이스 타입을 매개변수로 두고 호출할때 인수로 구현 객체를 대입 (구현객체에서 실체화된 메소드 호출)
+
+```
+//Vehicle 인터페이스 선언
+
+public interface Vehicle{
+  public void run();
+}
+
+------------------------------------------------------------------------------------------
+// 인터페이스 타입 Vehicle을 매개변수로 가지는 drive 함수 선언
+
+public class Driver{
+  public void drive(Vehicle vehicle){
+    vehicle.run();
+  }
+}
+
+------------------------------------------------------------------------------------------
+//Vehicle 구현 클래스 Bus 클래스 선언
+
+public class Bus implements Vehiclce{
+  @Override
+  public void run(){ 
+    System.out.println("버스가 달립니다.");
+  }
+}
+
+------------------------------------------------------------------------------------------
+// 실행 클래스 작성
+// Bus 객체가 자동 타입 변환 
+
+public class VehiclaExample{
+  public static void main(String[] args){
+    Vehicle v1 = new Bus(); // 인터페이스 변수에 구현 객체 대입
+    Driver d1 = new Driver();
+
+    d1.drive(v1); // Bus 구현 객체에서 오버라이딩된 값이 출력됨 ("버스가 달립니다.")
+}
 }
 
 ```
 
+### 3-2. 강제 타입변환
++ 구현객체가 자동타입변환하면, 인터페이스에 선언된 메소드만 사용가능하다는 제약(상속과 같음)
++ 구현객체에만 정의된 메소드를 사용하고 싶을 때 강제 타입변환
 
+```
+// 구현클래스 변수 = (구현 클래스)인터페이스 변수;
 
+Vehicle v1 = new Bus();
+
+Bus bus = (Bus)v1; // 이제 bus 객체는 Bus 타입으로 Bus클래스에만 있는 메소드와 오버라이딩 메소드 전부 사용가능(굳이 이렇게? 싶긴한데 설명을 위해서 적음)
+ 
+```
+
+## 4. 객체타입확인 (타입 예외 ClassCastExcaption 발생)
++ 강제 타입변환을 할때 하기전에 그 객체의 타입을 알아야 오류가 발생하지 않음
++ **instanceOf 사용**
+
+```
+// 오류 발생 상황
+
+Vehicle v1 = new Bus(); // Bus 객체를 Vehicle타입으로 타입변환  
+
+Texi t1 = (Texi)v1; // 근데 내가 Bus를 Vehicle로 바꾼걸 깜빡하고 Texi를 타입변환한줄 알고 Texi로 강제 타입변환 => 컴파일과정에서 예외발생
+
+------------------------------------------------------------------------------------------
+// instanceOf로 객체의 타입확인
+
+if(v1 instanceOf Bus){ //만약 Vehicle타입으로 변환된 객체가 Bus타입이라면
+  Bus bus =(Bus)v1; // Bus로 강제 타입변환
+}
+```
 
 
 + Q 왜 인터페이스에는 생성자가 없고 추상클래스에는 생성자가 있을까
