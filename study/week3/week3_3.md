@@ -14,4 +14,16 @@
 
 ![image](https://github.com/jjhh1234/Buil_Study/assets/105401500/27ac43ab-5472-468c-9d1a-8f6a5c4b6dec)
 
-### 2-1_1. 객체비교 equals()
+### 2-1_1. 객체비교 equals() - Object 클래스의 equal 메소드
++ eaual메소드의 매개타입은 Object 인데 이것은 모든 객체가 매개값으로 대입될 수 있음을 의미
++ 비교연산자 '==' 와 동일한 값을 리턴
+
+```
+Object obj1 = new Object();
+Object obj2 = new Object();
+
+boolean result = obj1.equals(obj2);
+
+boolena result = (obj1 == obj2);
+
+```
