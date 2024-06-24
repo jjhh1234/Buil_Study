@@ -157,8 +157,50 @@ ORDER BY price DESC, publisher ASC; //price가 먼저 내림차순으로 정렬 
  
 SUM  = SUM(* | DISTINCT  + 속성이름) , ex) SUM(price)
 
+AVG = AVG (* | DISTINCT + 속성이름) , ex AVG(price)
 
+COUNT = COUNT( * | DISTINCT + 속성이름) , ex) COUNT(*) //null 값을 제외한 해당 속성의 튜플 개수를 세어줌
 
+MAX = MAX(* | DISTINCT + 속성이름) , ex) MAX(price)
+
+MIN = MIN (* | DISTINCT + 속성이름), ex)MIN(price)
+ 
 ```
 
+#### Quiz 10 ) 고객이 주문한 도서의 총 판매액을 구하시오 
+```
+SELECT SUM(salprice) AS 총판매액
+FROM Book;
+```
+
+#### Quiz 11 ) 2번 김연아 고객이 주문한 도서의 총 판매액을 구하시오
+```
+SELECT SUM(salprice) AS 총판매액
+FROM Book
+WHERE custid = 2;
+
+//AS : 합계를 담을 그릇이 없기 떄문에 속성을 새로 만들고 그 안에 값읋 넣어줌(임시 테이블)
+```
+
+#### Quiz 12 ) 마당 서점의 도서 판매 건수를 구하시오.
+```
+SELECT COUNT(*) AS 총개수
+FROME Book;
+```
+
+#### Quiz 13 ) 고객별로 주문한 도서의 총 수량과 총 판매액을 구하시오.
+```
+SELECT COUNT(*) AS 총수량,  SUM(salprice) AS 총판매액
+FROM Book;
+```
+
+#### Quiz 14 ) 가격이 8000원 이상인 도서를 구매한 고객에 개하여 고객별 주문 도서의 총 수량을 구하시오. 단, 2권이상 구매한 고객에 대해서만 구하시오
+```
+SELECT COUNT(*) AS 총수량
+FROM Book
+WHERE price>= 8000
+GROUP BY custid
+HAVING COUNT(*) >=2; //custid 가 같을떄 그 행의 갯수가 2보다 큰것 
+
+```
 
