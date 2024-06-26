@@ -106,11 +106,32 @@ public void equalTest(){
 ### 2-1_2. 객체 해시코드 - Object 클래스의 hashCode 메소드
 + 객체 해쉬코드 : 객체를 식별하는 하나의 정수값
 + hashCode() : 객체의 메모리 번지를 이용해서 하나의 해시코드를 만들어 리턴 -> 객체마다 다른 값을가짐 
-+ 메소드를 실행해서 리턴된 해쉬값이 같은지 확인
-+ hashCode() 를 실행 해서 리턴된 해쉬코드의 값이 같은지 확인 -> 값이 같으면 equals 메소드로 다시 비교 -> 
++ equals와 함께 사용되는 이유: equals로 동일한 값을 가지는 객체를 같다고 만들어주긴 했지만 반환되는 hashCode가 다르므로 아직 완전히 동일한 객체라고 보기는 힘들기 떄문에 그 부분을 정의해주는 것 
 
 ```
-//해쉬코드를 재정의 하지 않았을때 
+//해쉬코드를 재정의 하지 않았을때
+
+public class Key{
+
+  public int num;
+
+  public Key(int num){
+    this.num = num;
+  }
+
+  @Override
+  public boolean equals(Object obj){
+    if(obj instanceof Key){
+      Key compareKey = (Kye)obj;
+      if(this.num == compareKey.num){
+      return true;
+    }
+}
+return false;
+  }
+}
+
+//이경우에 equal 메소드를 재정의 함으로써 동등객체임을 인정해주긴 했지만 반환되는 해쉬코드는 다르기 떄문에 완전히 동일하다고 보기는 힘들다
 
 ```
 
